@@ -21,7 +21,14 @@ public class VerifyAccountTests
     [Test]
     public void VerifySuccessfulCodeEntry()
     {
-        return;
+        var expectedCode = "999999";
+
+        var code = _vaPage.GetConfirmationCode();
+        Assert.That(code, Is.EqualTo(expectedCode));
+
+        _vaPage.FillConfirmationCode(code);
+        var isSuccess = _vaPage.IsSuccessVisible();
+        Assert.That(isSuccess, Is.True, "Success message not showing");
     }
 
 

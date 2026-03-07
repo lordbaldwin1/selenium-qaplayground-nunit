@@ -38,4 +38,9 @@ public abstract class BasePage
     {
         return _wait.Until(ExpectedConditions.ElementExists(locator));
     }
+
+    protected IEnumerable<IWebElement> WaitForElements(By locator)
+    {
+        return _wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(locator));
+    }
 }
