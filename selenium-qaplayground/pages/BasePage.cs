@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace selenium_qaplayground.pages;
+namespace selenium_qaplayground.Pages;
 
 public abstract class BasePage
 {

@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using SeleniumExtras.WaitHelpers;
 
-namespace selenium_qaplayground.pages;
+namespace selenium_qaplayground.Pages;
 
 // Dynamic Table Page
 

@@ -1,9 +1,11 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using selenium_qaplayground.pages;
+using selenium_qaplayground.Pages;
+using selenium_qaplayground.Utilities;
 
-namespace selenium_qaplayground.tests;
+namespace selenium_qaplayground.Tests;
 
+[TestFixture]
 public class DynamicTableTests
 {
     private IWebDriver _driver;
@@ -12,7 +14,7 @@ public class DynamicTableTests
     [SetUp]
     public void Setup()
     {
-        _driver = new ChromeDriver();
+        _driver = WebDriverUtility.GetDriver();
         _dtPage = new DynamicTablePage(_driver);
         _dtPage.Navigate();
     }
