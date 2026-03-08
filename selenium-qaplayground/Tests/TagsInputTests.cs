@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using selenium_qaplayground.Data;
 using selenium_qaplayground.Pages;
 using selenium_qaplayground.Utilities;
 
@@ -85,6 +86,23 @@ namespace selenium_qaplayground.Tests
 
             remainingTagCount = _tiPage.GetRemainingTagCount();
             Assert.That(remainingTagCount, Is.EqualTo(expectedRemainingTagCount));
+        }
+
+        [Test, TestCaseSource(
+            typeof(TestDataProvider),
+            nameof(TestDataProvider.TagManagementTestCases)
+        )]
+        public void VerifyAddingAndRemovingParameterized(TagTestData testData)
+        {
+            _tiPage.RemoveAllTags();
+            _tiPage.AddTags(testData.TagsToAdd);
+            _tiPage.RemoveTags(testData.TagsToRemove);
+
+            var tags = _tiPage.GetTags();
+            Assert.That(tags, Is.EquivalentTo(testData.ExpectedTags));
+
+            var remainingTagCount = _tiPage.GetRemainingTagCount();
+            Assert.That(remainingTagCount, Is.EqualTo(testData.ExpectedRemainingTagCount));
         }
 
         [TearDown]

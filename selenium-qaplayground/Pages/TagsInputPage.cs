@@ -53,6 +53,27 @@ namespace selenium_qaplayground.Pages
             WaitToBeClickable(TagInput).SendKeys(tagToAdd + Keys.Enter);
         }
 
+        public void AddTags(List<string> tagsToAdd)
+        {
+            var input = WaitToBeClickable(TagInput);
+            foreach (var tagToAdd in tagsToAdd)
+            {
+                input.SendKeys(tagToAdd + Keys.Enter);
+            }
+        }
+
+        public void RemoveTags(List<string> tagsToRemove)
+        {
+            var currentTags = WaitForElements(Tags);
+            foreach (var tag in currentTags)
+            {
+                if (tagsToRemove.Contains(tag.Text))
+                {
+                    tag.FindElement(TagRemoveBtn).Click();
+                }
+            }
+        }
+
         public List<string> GetTags()
         {
             return [.. WaitForElements(Tags).Select(el => el.Text)];
