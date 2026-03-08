@@ -8,7 +8,7 @@ public class WebDriverUtility
     public static IWebDriver GetDriver()
     {
         ChromeOptions options = new ChromeOptions();
-        options.AddArgument("headless");
+        // options.AddArgument("headless");
         IWebDriver driver = new ChromeDriver(options);
         driver.Manage().Window.Maximize();
         return driver;
